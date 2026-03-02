@@ -71,16 +71,16 @@ export const constantRoute = [
       description: '在线字数计数器,主要是方便计算字数，以控制文字数量的小工具(小说作者、论文、文案文档、文字编辑必备工具)。',
     }
   },
-  {
-    path: '/ip',
-    component: () => import('@/components/Tools/Ip/Ip.vue'),
-    name: 'ip',
-    meta: {
-      title: "IP查询",
-      keywords: 'ip,ip查询,ip地址查询,ip138,查ip,我的ip,公网ip,ip归属地查询',
-      description: '公网ip地址归属地查询',
-    }
-  },
+  // {
+  //   path: '/ip',
+  //   component: () => import('@/components/Tools/Ip/Ip.vue'),
+  //   name: 'ip',
+  //   meta: {
+  //     title: "IP查询",
+  //     keywords: 'ip,ip查询,ip地址查询,ip138,查ip,我的ip,公网ip,ip归属地查询',
+  //     description: '公网ip地址归属地查询',
+  //   }
+  // },
   {
     path: '/scaletran',
     component: () => import('@/components/Tools/ScaleTran/ScaleTran.vue'),
