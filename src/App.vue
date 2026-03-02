@@ -13,9 +13,11 @@ const componentStore = useComponentStore()
 <template>
   <el-container>
     <!-- left -->
-    <el-aside class="fixed top-0 left-0 h-full z-10 c-md:block c-sm:hidden c-xs:hidden" width="240px" v-show="!componentStore.leftCom">
+    <transition name="left-sidebar">
+      <el-aside v-if="!componentStore.leftCom" class="fixed top-0 left-0 h-full z-10 c-md:block c-sm:hidden c-xs:hidden" width="240px">
         <Left></Left>
-    </el-aside>
+      </el-aside>
+    </transition>
     <el-drawer 
       show-close
       size="240px" 
@@ -27,7 +29,7 @@ const componentStore = useComponentStore()
     </el-drawer>
 
     <!-- right -->
-    <el-container  :class="!componentStore.leftCom ? 'c-md:ml-[240px]' : ''">
+    <el-container  :class="!componentStore.leftCom ? 'c-md:ml-[240px]' : ''" class="main-container">
       <el-header>
         <Header/>
       </el-header>
@@ -62,5 +64,62 @@ const componentStore = useComponentStore()
 }
 .animation-leave-active {
 	transition: all 0.3s cubic-bezier(1, 0.6, 0.6, 1);
+}
+
+/* 左侧菜单折叠动画 */
+.left-sidebar-enter-from,
+.left-sidebar-leave-to {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.left-sidebar-enter-to,
+.left-sidebar-leave-from {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.left-sidebar-enter-active,
+.left-sidebar-leave-active {
+  transition: all 0.3s ease;
+}
+
+/* 主内容区域动画 */
+.main-container {
+  transition: margin-left 0.3s ease;
+}
+</style>
+
+<style>
+/* 全局科技感样式 */
+body {
+  background-color: #f0f2f5;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(64, 158, 255, 0.05) 0%, transparent 20%),
+    radial-gradient(circle at 80% 30%, rgba(118, 75, 162, 0.05) 0%, transparent 25%),
+    radial-gradient(circle at 40% 70%, rgba(102, 126, 234, 0.05) 0%, transparent 20%),
+    radial-gradient(circle at 90% 90%, rgba(64, 158, 255, 0.05) 0%, transparent 15%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* 科技感滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #409EFF, #667eea);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #667eea, #764ba2);
 }
 </style>

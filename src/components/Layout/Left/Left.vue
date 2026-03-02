@@ -8,6 +8,7 @@ const route = useRoute()
 
 const appName = ref(import.meta.env.VITE_APP_TITLE || '工具坊')
 const appNet = ref(import.meta.env.VITE_APP_DESC || '')
+const leftAdv = ref(import.meta.env.VITE_LEFT_ADV || '')
 //菜单选中
 const defaultActive = ref('')
 //默认展开的菜单
@@ -64,7 +65,7 @@ onMounted(async () => {
     <el-scrollbar>
       <!-- logo -->
       <div class="flex justify-center">
-        <router-link class="flex flex-row h-24" to="/">
+        <router-link class="flex flex-row h-24 logo-container p-4" to="/">
           <img class="h-12 w-auto rounded-lg mr-2 mt-auto mb-auto" src="@/assets/logo.png" :alt="appNet">
           <div class="flex flex-col  mt-auto mb-auto">
             <div class="text-2xl">{{ appName }}</div>
@@ -112,6 +113,9 @@ onMounted(async () => {
           </el-menu-item>
         </el-menu>
       </div>
+      
+      <!-- 广告位 -->
+      <div class="ad-container" v-if="leftAdv != ''" v-html="leftAdv"></div>
     </el-scrollbar>
   <!-- </div> -->
 </template>
@@ -122,17 +126,17 @@ onMounted(async () => {
   list-style: none !important;
   padding-left: 0 !important;
   margin-top: 1rem;
-  background-color: none !important;
+  background-color: transparent !important;
 }
 .el-menu:hover{
-  background-color: none !important;
+  background-color: transparent !important;
 }
 .el-sub-menu{
   border-radius: 10rem !important;
   list-style: none !important;
   margin: 0 !important;
   padding-left: 0 !important;
-  background-color: none !important;
+  background-color: transparent !important;
 }
 
 /* 深选择器获取menu__title */
@@ -140,12 +144,17 @@ onMounted(async () => {
   /* padding-left: 0 !important; */
   font-size: 1rem;
   border-radius: 1rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
+
 .el-sub-menu :deep(.el-sub-menu__title:hover){
   /* padding-left: 0 !important; */
   color: #fff;
-  background-color: #409EFF;
+  background: linear-gradient(135deg, #409EFF, #667eea);
   border-radius: 1rem;
+  box-shadow: 0 4px 15px rgba(64, 158, 255, 0.3);
 }
 
 .el-menu-item{
@@ -154,15 +163,77 @@ onMounted(async () => {
   height: 38px!important;
   margin: 10px 0;
   border-radius: 1rem !important;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
+
+.el-menu-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(180deg, #409EFF, #667eea);
+  transform: scaleY(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+  border-radius: 0 1rem 1rem 0;
+}
+
+.el-menu-item:hover::before,
+.el-menu-item.is-active::before {
+  transform: scaleY(1);
+}
+
 .el-menu-item.is-active{
   color: #fff;
-  background-color: #409EFF;
+  background: linear-gradient(135deg, #409EFF, #667eea);
   border-radius: 1rem;
+  box-shadow: 0 4px 15px rgba(64, 158, 255, 0.3);
 }
+
 .el-menu-item:hover{
   color: #fff;
-  background-color: #409EFF;
+  background: linear-gradient(135deg, #409EFF, #667eea);
   border-radius: 1rem;
+  box-shadow: 0 4px 15px rgba(64, 158, 255, 0.3);
+}
+
+/* 简约Logo区域 */
+.logo-container {
+  position: relative;
+  border-radius: 12px;
+}
+
+/* 广告位样式 */
+.ad-container {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 200px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.ad-container:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.ad-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.ad-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
 }
 </style>

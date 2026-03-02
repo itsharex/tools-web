@@ -75,24 +75,19 @@ onMounted(() => {
 <template>
   <header class="h-24 w-full flex justify-between pt-2 pb-2 c-xs:h-16 c-xs:border-b-[1px] items-center">
     <div class="flex items-center w-full">
-      <Transition name="fold" class="hidden c-sm:block c-md:hidden c-xs:block">
-        <svg v-if="!componentStore.leftComDrawer" @click="componentStore.setleftComDrawerStatus(true)" t="1702978210636" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7618" width="30" height="30">
+      <div class="hidden c-sm:block c-md:hidden c-xs:block">
+        <svg @click="componentStore.setleftComDrawerStatus(!componentStore.leftComDrawer)" :class="['icon', { 'rotate': componentStore.leftComDrawer }]" t="1702978210636" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7618" width="30" height="30">
           <path fill="#444" fill-opacity=".9" d="M895.936 256l-768-0.896 0.128-64L896 192l-0.064 64zM179.2 689.152l202.688-152a32 32 0 0 0 0-51.2L179.2 333.952a32 32 0 0 0-51.2 25.6v304a32 32 0 0 0 51.2 25.6z m12.8-89.6v-176l117.312 88L192 599.552zM896 544H480v-64H896v64z m-0.064 288l-768-0.896 0.128-64L896 768l-0.064 64z" p-id="7619"></path>
         </svg>
-        <svg v-else @click="componentStore.setleftComDrawerStatus(false)" t="1702978577170" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1587" width="30" height="30">
-          <path fill="#444" fill-opacity=".9" d="M128.064 192l768 0.896-0.128 64L128 256l0.064-64z m514.048 294.848a32 32 0 0 0 0 51.2l202.688 152a32 32 0 0 0 51.2-25.6v-304a32 32 0 0 0-51.2-25.6l-202.688 152zM832 424.448v176l-117.312-88L832 424.448zM128 480h416v64H128v-64z m0.064 288l768 0.896-0.128 64L128 832l0.064-64z" p-id="1588"></path>
-        </svg>
-      </Transition>
-
+      </div>
+      
       <!-- c-md:block -->
-      <Transition name="fold" class="hidden c-md:block">
-        <svg v-if="!componentStore.leftCom" @click="componentStore.setLeftComStatus(true)" t="1702978577170" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1587" width="30" height="30">
-          <path fill="#444" fill-opacity=".9" d="M128.064 192l768 0.896-0.128 64L128 256l0.064-64z m514.048 294.848a32 32 0 0 0 0 51.2l202.688 152a32 32 0 0 0 51.2-25.6v-304a32 32 0 0 0-51.2-25.6l-202.688 152zM832 424.448v176l-117.312-88L832 424.448zM128 480h416v64H128v-64z m0.064 288l768 0.896-0.128 64L128 832l0.064-64z" p-id="1588"></path>
-        </svg>
-        <svg v-else @click="componentStore.setLeftComStatus(false)" t="1702978210636" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7618" width="30" height="30">
+      <div class="hidden c-md:block">
+        <svg @click="componentStore.setLeftComStatus(!componentStore.leftCom)" :class="['icon', { 'rotate': componentStore.leftCom }]" t="1702978210636" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7618" width="30" height="30">
           <path fill="#444" fill-opacity=".9" d="M895.936 256l-768-0.896 0.128-64L896 192l-0.064 64zM179.2 689.152l202.688-152a32 32 0 0 0 0-51.2L179.2 333.952a32 32 0 0 0-51.2 25.6v304a32 32 0 0 0 51.2 25.6z m12.8-89.6v-176l117.312 88L192 599.552zM896 544H480v-64H896v64z m-0.064 288l-768-0.896 0.128-64L896 768l-0.064 64z" p-id="7619"></path>
         </svg>
-      </Transition>
+      </div>
+    
 
       <div class="ml-3 mr-1">
         <router-link to="/">
@@ -177,25 +172,64 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.fold-enter-active {
-  transition: all 1s ease-out;
-}
-
-.fold-enter-from,
-.fold-leave-to {
-  transform: translateX(20px);
-  opacity: 0;
-}
 
 
-:deep(.el-select__wrapper) {
-    box-shadow: 0 0 0 0px var(--el-input-border-color, var(--el-border-color)) inset;
-    cursor: default;
-    @apply md:w-full;
-}
-
+/* 科技感搜索框 */
 .el-select :deep(.el-select__wrapper){
-  background-color: rgba(46, 51, 56, 0.05);
-  background-color: rgb(255, 255, 255);
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+  border: 1px solid rgba(64, 158, 255, 0.2);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(64, 158, 255, 0.1);
+}
+
+/* 搜索框容器 */
+.el-select {
+  transition: width 0.3s ease;
+}
+
+.el-select :deep(.el-select__wrapper):hover {
+  border-color: #409EFF;
+  box-shadow: 0 4px 12px rgba(64, 158, 255, 0.2);
+}
+
+.el-select :deep(.el-select__wrapper.is-focus) {
+  border-color: #409EFF;
+  box-shadow: 0 0 0 2px rgba(64, 158, 255, 0.2);
+}
+
+/* 科技感按钮 */
+.el-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+}
+
+.el-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(64, 158, 255, 0.3);
+}
+
+/* 科技感图标 */
+.icon {
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.icon:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 8px rgba(64, 158, 255, 0.5));
+}
+
+/* 旋转动画 */
+.icon.rotate {
+  transform: rotate(180deg);
+}
+
+/* 简约Header */
+header {
+  background: transparent;
+  position: relative;
 }
 </style>
