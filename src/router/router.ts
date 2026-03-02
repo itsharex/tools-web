@@ -451,16 +451,7 @@ export const constantRoute = [
       description: '在线数据存储单位换算工具，支持字节、KB、MB、GB、TB、PB、EB等存储单位之间的相互转换',
     }
   },
-  {
-    path: '/aes',
-    component: () => import('@/components/Tools/AesEncrypt/AesEncrypt.vue'),
-    name: 'aes',
-    meta: {
-      title: "AES加解密",
-      keywords: 'AES加密,AES解密,加密工具,解密工具',
-      description: '在线AES加解密工具，支持多种加密模式和填充方式，提供安全可靠的数据加密解密服务',
-    }
-  },
+
   {
     path: '/hashcalculator',
     component: () => import('@/components/Tools/HashCalculator/HashCalculator.vue'),
