@@ -42,7 +42,7 @@
     "lodash": "^4.17.21",
     "prettier": "^3.3.2",
     "prismjs": "^1.29.0",
-    "qrcode-vue3": "^1.6.8",
+    "qrcode-vue3": "^1.7.1",
     "sass": "^1.69.5",
     "sass-loader": "^13.3.2",
     "sql-formatter": "^15.7.2",
@@ -68,11 +68,11 @@
     "path": "^0.12.7",
     "pinia": "^2.1.7",
     "tailwindcss": "^3.3.5",
-    "typescript": "^5.3.2",
+    "typescript": "^5.9.3",
     "vite": "^4.5.1",
     "vite-plugin-html": "^3.2.0",
     "vite-plugin-svg-icons": "^2.0.1",
     "vue-router": "^4.2.5",
-    "vue-tsc": "^1.8.24"
+    "vue-tsc": "^3.2.5"
   }
 }

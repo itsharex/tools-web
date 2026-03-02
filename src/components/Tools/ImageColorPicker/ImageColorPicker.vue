@@ -140,7 +140,7 @@ const handleImageClick = (e: MouseEvent) => {
     const ctx = canvas.value.getContext('2d');
     if (ctx) {
       const pixel = ctx.getImageData(x, y, 1, 1).data;
-      const [r, g, b, a] = pixel;
+      const [r, g, b] = pixel;
       
       // 转换为各种颜色格式
       const hex = rgbToHex(r, g, b);

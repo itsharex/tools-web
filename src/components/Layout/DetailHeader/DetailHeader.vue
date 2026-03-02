@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Star, StarFilled } from '@element-plus/icons-vue'
-import { onMounted, reactive, ref, computed } from 'vue';
+import { onMounted, reactive, ref } from 'vue';
 import { useRoute } from 'vue-router'
 import { useToolsStore } from '@/store/modules/tools'
 import { ElMessage } from 'element-plus'

@@ -87,7 +87,7 @@ import ToolDetail from '@/components/Layout/ToolDetail/ToolDetail.vue'
 
 const title = "反应速度测试"
 
-const testArea = ref<HTMLElement | null>(null);
+// 移除未使用的 testArea 引用
 const testStatus = ref<'ready' | 'waiting' | 'active' | 'completed'>('ready');
 const reactionTime = ref(0);
 const testHistory = ref<number[]>([]);

@@ -79,7 +79,7 @@ const optionsText = ref('');
 const options = ref<string[]>([]);
 const isSpinning = ref(false);
 const result = ref<string>('');
-const wheel = ref<HTMLElement | null>(null);
+// const wheel = ref<HTMLElement | null>(null);
 const rotation = ref(0);
 
 // 颜色列表
@@ -136,9 +136,9 @@ const getSectorStyle = (index: number) => {
   const endX = centerX + radius * Math.cos((endAngle - 90) * Math.PI / 180);
   const endY = centerY + radius * Math.sin((endAngle - 90) * Math.PI / 180);
   
-  const largeArcFlag = endAngle - startAngle <= 180 ? '0' : '1';
+  // const largeArcFlag = endAngle - startAngle <= 180 ? '0' : '1';
   
-  const path = `M ${centerX} ${centerY} L ${startX} ${startY} A ${radius} ${radius} 0 ${largeArcFlag} 1 ${endX} ${endY} Z`;
+  // const path = `M ${centerX} ${centerY} L ${startX} ${startY} A ${radius} ${radius} 0 ${largeArcFlag} 1 ${endX} ${endY} Z`;
   
   return {
     backgroundColor: colors[index % colors.length],
