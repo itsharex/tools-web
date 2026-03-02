@@ -73,7 +73,7 @@ onMounted(() => {
         :type="isCollected ? 'warning' : 'default'"
         @click="toggleCollect"
         class="tech-button"
-        size="medium"
+        size="default"
       >
         {{ isCollected ? '已收藏' : '收藏' }}
       </el-button>
